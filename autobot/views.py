@@ -15,7 +15,6 @@ def index(request):
 
 @login_required
 def login(request):
-    logger.info("Starting login ...")
     return render(request, "index.html")
 
 
