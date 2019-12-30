@@ -10,13 +10,13 @@
     </a>
     <h1>AutoBot per Linkedin</h1>
     {% if user.is_authenticated %}
-    <h2>Welcome {{ user.username }}</h2>
+      <h2>Welcome {{ user.username }}</h2>
     {% endif %}
     <p><strong>Questa applicazione ti aiuterà ad eseguire alcune operazioni automatiche sul tuo profilo LinkedIn. Sarà il tuo social media manager automatizzato!</strong></p>
     {% if user.is_authenticated %}
-    <a type="button" class="btn btn-lg btn-primary" href="{% url 'logout' %}"><span class="fab fa-linkedin-in"></span> Logout da LinkedIn</a>
+      <a type="button" class="btn btn-lg btn-primary" href="{% url 'logout' %}"><span class="fab fa-linkedin-in"></span> Logout da LinkedIn</a>
     {% else %}
-    <a type="button" class="btn btn-lg btn-primary" href="{% url 'social:begin' 'linkedin-oauth2' %}"><span class="fab fa-linkedin-in"></span> Login con LinkedIn</a>
+      <a type="button" class="btn btn-lg btn-primary" href="{% url 'social:begin' 'linkedin-oauth2' %}"><span class="fab fa-linkedin-in"></span> Login con LinkedIn</a>
     {% endif %}
     <a type="button" class="btn btn-lg btn-default" href="https://github.com/biancini/linkedin-autobot"><span class="fab fa-github"></span> Codice su GitHub</a>
   </div>
