@@ -1,6 +1,6 @@
 from django.urls import path, include
-
 from django.contrib import admin
+from django.contrib.auth import views as auth_views
 
 admin.autodiscover()
 
@@ -16,6 +16,9 @@ import autobot.views
 
 urlpatterns = [
     path("", autobot.views.index, name="index"),
+    path("login/", autobot.views.login, name="login"),
+    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
+    path("social-auth/", include('social_django.urls', namespace="social")),
     path("db/", autobot.views.db, name="db"),
     path("admin/", admin.site.urls),
 ]

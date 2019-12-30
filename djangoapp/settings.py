@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "social_django",
     "autobot",
 ]
 
@@ -83,7 +84,7 @@ DATABASES = {
     }
 }
 
-# Password validation
+# Password validation and login
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -93,6 +94,29 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+]
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.linkedin.LinkedinOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = os.environ.get('SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY', 'YOUR LINKEDIN KEY')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = os.environ.get('SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET', 'YOUR LINKEDIN SECRET')
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = ['email-address', 'formatted-name', 'public-profile-url', 'picture-url']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
+    ('id', 'id'),
+    ('formattedName', 'name'),
+    ('emailAddress', 'email_address'),
+    ('pictureUrl', 'picture_url'),
+    ('publicProfileUrl', 'profile_url'),
 ]
 
 
