@@ -52,7 +52,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = "autobot.urls"
+ROOT_URLCONF = "djangoapp.urls"
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     }
 ]
 
-WSGI_APPLICATION = "autobot.wsgi.application"
+WSGI_APPLICATION = "djangoapp.wsgi.application"
 
 
 # Database
