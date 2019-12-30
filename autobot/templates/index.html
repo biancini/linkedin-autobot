@@ -10,7 +10,7 @@
     </a>
     <h1>AutoBot per Linkedin</h1>
     {% if user.is_authenticated %}
-      <h2>Welcome {{ user.username }}</h2>
+      <h2>Welcome {{ user.get_full_name }}</h2>
     {% endif %}
     <p><strong>Questa applicazione ti aiuterà ad eseguire alcune operazioni automatiche sul tuo profilo LinkedIn. Sarà il tuo social media manager automatizzato!</strong></p>
     {% if user.is_authenticated %}
@@ -23,7 +23,11 @@
 </div>
 <div class="container">
   <div class="alert alert-info text-center" role="alert">
-    Per poter sfruttare le caratteristiche di questa applicazione è necessario fare login con il proprio account di LinkedIn.
+    {% if user.is_authenticated %}
+      Access-token: {{ token }}
+    {% else %}
+      Per poter sfruttare le caratteristiche di questa applicazione è necessario fare login con il proprio account di LinkedIn.
+    {% endif %}
   </div>
   <hr>
   <div class="row">
